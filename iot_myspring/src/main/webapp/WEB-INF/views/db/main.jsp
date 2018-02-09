@@ -39,7 +39,7 @@ dhtmlxEvent(window,"load",function(){
 		       right: 270,
 		       bottom: 30,
 		       left: 40
-  				}
+  			}
    });
    aLay = bodyLayout.cells("a");
    aLay.setWidth(300);

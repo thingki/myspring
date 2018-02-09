@@ -1,6 +1,5 @@
 package com.iot.spring.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,28 +21,6 @@ public class UserServiceImpl implements UserService {
 		return udao.selectUserList();
 	}
 	
-	@Override
-	public HashMap<String, Object> getUser(UserInfo user) {
-		UserInfo checkUc = udao.selectUser(user);
-		HashMap<String, Object> hm = new HashMap<String, Object>();
-		hm.put("msg", "Welcome IOT_TEST HomePage");
-		hm.put("login", "ok");
-		if (checkUc != null) {
-			if (!checkUc.getuPwd().equals(user.getuPwd())) {
-				hm.put("msg", "Check UserPWD");
-				hm.put("login", "pwdno");
-			} 	
-		}else {
-			hm.put("msg", "Check UserID!");
-			hm.put("login", "idno");
-		}
-		return hm;
-	}
-	
-	@Override
-	public UserInfo getUser(List<UserInfo> user) {
-		return null;
-	}
 
 	@Override
 	public Map<String, Object> insertUser(Map<String, Object> map, UserInfo ui) {
@@ -65,5 +42,37 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int deleteUser() {
 		return 0;
+	}
+
+	@Override
+	public UserInfo getUserInfo(UserInfo ui) {
+		return udao.selectUser(ui);
+	}
+
+	private boolean checkUserInfo(UserInfo ui) {
+		if(udao.checkUserInfo(ui)==1) {
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public void insertUser2(Map<String, Object> rMap, UserInfo ui) {
+		rMap.put("msg", "fail~");
+		rMap.put("signupOk", false);
+		if(checkUserInfo(ui)) {
+			rMap.put("msg", ui.getuId()+"는 이미 존재하는 아이디임");
+			return;
+		}
+		int result = udao.insertUser2(ui);
+		if(result==1) {
+			rMap.put("msg", "success");
+			rMap.put("signupOk", true);
+		}
+	}
+
+
+	@Override
+	public List<UserInfo> getUserList(UserInfo ui) {
+		return udao.selectUserList(ui);
 	}
 }

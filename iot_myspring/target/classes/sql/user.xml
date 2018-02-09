@@ -2,31 +2,45 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="user">
 	<select id="selectUserList" resultType="ui" parameterType="ui">
-		select uNo,uName,uId,uPwd,uEmail from user_info
+		select uNo,uName,uId,uPwd,uEmail,uAdmin from user_info
 	</select>
-	
+
 	<select id="selectUser" resultType="ui" parameterType="ui">
-		select uNo,uName,uId,uPwd,uEmail from user_info where uNo=#{uNo}
+		select uNo,uName,uId,uPwd,uEmail,uAdmin from user_info
+		<where>
+			1=1
+			<if test="uId!=null">
+				and uId=#{uId}
+			</if>
+			<if test="uPwd!=null">
+				and uPwd=#{uPwd}
+			</if>
+			<if test="uNo!=0">
+				and uNo=#{uNo}
+			</if>
+		</where>
 	</select>
-	
-	<select id="loginUser" resultType="map" parameterType="ui">
-		select uNo,uName,uId,uPwd,uEmail from user_info where uId=#{uId}
+
+	<select id="checkUser" resultType="int" parameterType="ui">
+		select
+		count(1) from user_info where uId=#{uId}
 	</select>
-	
-	<select id="insertUser"	resultType="int" parameterType="ui">
-	insert into user_info(uName,uId,uPwd,uEmail) 
-	values(#{uName},#{uId},#{uPwd},#{uEmail})
+
+	<select id="insertUser" resultType="int" parameterType="ui">
+		insert into user_info(uName,uId,uPwd,uEmail,uAdmin)
+		values(#{uName},#{uId},#{uPwd},#{uEmail},#{uAdmin})
 	</select>
-	
+
 	<select id="updateUser" resultType="int">
-	update user_info 
-	set uName=#{uName}, uId=#{uId}, uPwd=#{uPwd}, uEmail=#{uEmail} where uNo=#{uNo}
+		update user_info
+		set uName=#{uName}, uId=#{uId}, uPwd=#{uPwd}, uEmail=#{uEmail} where
+		uNo=#{uNo}
 	</select>
-	
+
 	<select id="deleteUser" resultType="int">
-	delete from user_info where uNo=#{uNo}
+		delete from user_info where uNo=#{uNo}
 	</select>
 </mapper>

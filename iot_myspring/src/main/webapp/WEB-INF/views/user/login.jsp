@@ -28,8 +28,15 @@ var winF,popW;
 function createW(){
    winF = new dhtmlXWindows();
    winF.attachViewportTo("winVP");
+
    popW = winF.createWindow("win1",550,80,400,400);
+   winF.centerOnScreen
    popW.setText("SIGN UP");
+   
+   winF.window("win1").centerOnScreen();
+   winF.window("win1").denyMove();
+   winF.window("win1").denyResize();
+   
    
    var formObj = [
    				{type:"fieldset", offsetTop:12, name:"connectionInfo", inputWidth:"auto",
