@@ -13,7 +13,6 @@
 		<property name="username" value="root" />
 		<property name="password" value="test" />
 	</bean>
-	
 	<bean id="iot2" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="iot2ds"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
@@ -25,7 +24,6 @@
 		<property name="username" value="root" />
 		<property name="password" value="test" />
 	</bean>
-	
 	<bean id="connector" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="connectords"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>

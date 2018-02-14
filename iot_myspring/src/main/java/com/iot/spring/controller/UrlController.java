@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +35,11 @@ public class UrlController {
 	@RequestMapping("/path/**")
 	public String forwardJsp(HttpServletRequest request, HttpServletRequest session) {
 		String url=request.getRequestURI();
-		System.out.println(url);
 		String rootPath = request.getContextPath();
 		url=getUrl(url, rootPath);
-		System.out.println(url);
-		logger.info("path=>{}", url);
 		List<MenuInfo> menuList = ms.getMenuList();
 		session.setAttribute("menuList", menuList);
+		logger.info("menu=>{}", menuList);
 		return url;
 	}
 

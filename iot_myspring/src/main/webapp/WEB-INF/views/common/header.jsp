@@ -1,84 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-<title>Complex content in header</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<script>
-		var myGrid;
-		function doOnLoad(){
-			myGrid = new dhtmlXGridObject('gridbox');
-			myGrid.setImagePath("../../../codebase/imgs/");
-			myGrid.setHeader("Sales,Title,Author,Price,In Store,Shipping,Bestseller,Published");
-			myGrid.setInitWidths("70,150,120,80,80,80,80,100");
-			myGrid.setColAlign("right,left,left,right,center,left,center,center");
-			myGrid.setColTypes("dyn,ed,ed,price,ch,co,ra,ro");
-			var combobox = myGrid.getCombo(5);
-			combobox.put("1","1 Hour");
-			combobox.put("12","12 Hours");
-			combobox.put("24","24 Hours");
-			combobox.put("48","2 days");
-			combobox.put("168","1 week");
-			combobox.put("pick","pick up");
-			combobox.put("na","na");
-			myGrid.setColSorting("int,str,str,int,str,str,str,str");
-			myGrid.setColumnColor("white,#d5f1ff,#d5f1ff");
-			myGrid.setColumnMinWidth(50,0);
-			myGrid.enableAutoWidth(true);
-			myGrid.enableAutoHeight(true);
-			myGrid.init();
-			myGrid.load("../common/grid.xml", function(){
-				myGrid.attachHeader("#rspan,<div id='title_flt' style='width:90%'></div>,<div id='author_flt'></div>,#rspan,#rspan,#rspan,#rspan,#rspan");
-				//set title filter field
-				document.getElementById("title_flt").appendChild(document.getElementById("title_flt_box").childNodes[0]);
-				//set author fiter field
-				var authFlt = document.getElementById("author_flt").appendChild(document.getElementById("author_flt_box").childNodes[0]);
-				populateSelectWithAuthors(authFlt);
-				//block sorting and resize actions for second row
-				myGrid.hdr.rows[2].onmousedown=myGrid.hdr.rows[2].onclick=function(e){(e||event).cancelBubble=true;};
-				myGrid.setSizes();
-			});
-		}
-		function filterBy(){
-			var tVal = document.getElementById("title_flt").childNodes[0].value.toLowerCase();
-			var aVal = document.getElementById("author_flt").childNodes[0].value.toLowerCase();
-			for(var i=0; i< myGrid.getRowsNum();i++){
-				var tStr = myGrid.cells2(i,1).getValue().toString().toLowerCase();
-				var aStr = myGrid.cells2(i,2).getValue().toString().toLowerCase();
-				if((tVal=="" || tStr.indexOf(tVal)==0) && (aVal=="" || aStr.indexOf(aVal)==0))
-					myGrid.setRowHidden(myGrid.getRowId(i),false);
-				else
-					myGrid.setRowHidden(myGrid.getRowId(i),true)
-			}
-		}
-		function populateSelectWithAuthors(selObj){
-			selObj.options.add(new Option("All Authors",""));
-			var usedAuthAr = new dhtmlxArray();
-			for(var i=0;i<myGrid.getRowsNum();i++){
-				var authNm = myGrid.cells2(i,2).getValue();
-				if(usedAuthAr._dhx_find(authNm)==-1){
-					selObj.options.add(new Option(authNm,authNm));
-					usedAuthAr[usedAuthAr.length] = authNm;
-				}
-			}
-		}
-	</script>
-</head>
-<body onLoad="doOnLoad()">
-	<h1>Complex content in header</h1>
-	<p>Setting complex content to header</p>
-	<div id="gridbox" style="width:750px;height:450px;overflow:hidden"></div>
-	<ul>
-		<li>Complex objects to use in grid header can be created in invisible container and attached to div elements in grid header after loading grid.
-			Otherwise they can be created using script on the fly.</li>
-		<li>Example of functions which can be usefull for filtering grid content (used in current sample):</li>
-	</ul>
-	<div style="display:none">
-		<div id="title_flt_box"><input type="text" style="width: 100%; border:1px solid gray;" onClick="(arguments[0]||window.event).cancelBubble=true;" onKeyUp="filterBy()"></div>
-		<div id="author_flt_box"><select style="width:100%" onclick="(arguments[0]||window.event).cancelBubble=true;" onChange="filterBy()"></select></div>
+
+    
+<style>
+body {
+	/* background-image: url("http://i.imgur.com/KjyvQ6I.jpg"); */
+	background-color: black;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.logo-d {
+	text-align: center;
+	margin-top: 220px;
+}
+
+.logo-d img {
+	width: 40%;
+	height: 40%;
+}
+
+/* .line {
+	margin: 0 auto;
+	width: 45%;
+	height: 5px;
+	background: #fff;
+	border-radius: 20px 60px 20px 50px;
+} 가운데 하얀줄*/
+
+</style>
+
+<div class="night">
+  <div class="stars">
+    <div id='star1'></div>
+    <div id='star2'></div>
+    <div id='star3'></div>
+  </div>
+</div>
+
+	<div class="logo-d">
+		<!-- 메인가운데 화면<img src="https://blog.codepen.io/wp-content/uploads/2012/06/codepen-wordmark-display-inside-white@10x.png" alt=""> -->
 	</div>
-</body>
-</html>
+	<div class="line"></div>
+	
+  <div id="container">
+    <div id="dock">
+      <ul>
+		<li>
+          <span>Finder</span> <a href="#"><img src=
+          "https://upload.wikimedia.org/wikipedia/en/4/45/Mac_Finder_icon_%28OS_X_Yosemite%29.png">
+          </a>
+        </li>
+        <li>
+          <span>Chrome</span> <a href="#"><img src=
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Google_Chrome_icon_%282011%29.svg/2000px-Google_Chrome_icon_%282011%29.svg.png">
+          </a>
+        </li>
+        <li>
+          <span>Firefox</span> <a href="#"><img src=
+          "http://pluspng.com/img-png/mozilla-png-file-mozilla-firefox-3-5-logo-256-png-256.png"></a>
+        </li>
+        <li>
+          <span>App Store</span> <a href="#"><img src=
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/App_Store_OS_X.svg/2000px-App_Store_OS_X.svg.png"></a>
+        </li>
+        <li>
+          <span>Codepen</span> <a href="#"><img src=
+          "https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png"></a>
+        </li>
+        <li>
+          <span>Launchpad</span> <a href="#"><img src=
+          "http://icons.iconarchive.com/icons/johanchalibert/mac-osx-yosemite/1024/launchpad-icon.png"></a>
+        </li>
+		<li>
+          <span>System pereferences</span> <a href="#"><img src=
+          "http://icons.iconarchive.com/icons/johanchalibert/mac-osx-yosemite/1024/system-preferences-icon.png"></a>
+        </li>
+				<li>
+          <span>Siri</span> <a href="#"><img src=
+          "https://pre00.deviantart.net/008b/th/pre/f/2017/169/1/3/siri_by_hs1987-dbd58rs.png"></a>
+        </li>
+				<li>
+          <span>iTunes</span> <a href="#"><img src=
+          "https://forums.macrumors.com/attachments/itunes-1024x1024-png.565323/"></a>
+        </li>
+      </ul>
+    </div>
+  </div>

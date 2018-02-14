@@ -1,392 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
 
-<head>
-<!-- <script src='//production-assets.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script> -->
-<!-- <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9aed88ea04330dc14c8d52f55.js'></script>
- -->
-<!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
- -->
- 
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> <!--달 해  -->
-
-<style>@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
-
-html,
 body {
-  margin: 0;
-  padding: 0;
-}
-body {
-  color: #FFF;
-  background: #1b2735;
-  font-size: 14px;
-  overflow: hidden;
-  font-family: 'Josefin Sans', sans-serif;
+	/* background-image: url("http://i.imgur.com/KjyvQ6I.jpg"); */
+	background-color: black;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
-a, a:visited{
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 1;
-  transition: all .5s;
+.logo-d {
+	text-align: center;
+	margin-top: 220px;
 }
 
-a:hover{
-  opacity: .5;
+.logo-d img {
+	width: 40%;
+	height: 40%;
 }
-
-.content{
-    margin: auto;
-    position:absolute;
-    text-align: center;
-    font-size: calc(5vh + 5vw);
-    width: 100%;
-    left: 50%;
-    top:50%;
-    -webkit-transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
-}
-
-.day{
-  position:absolute;
-  background:#1bc0ff;
-  min-height:100%;
-  min-width:100%;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-}
-
-.dayclose{
-  cursor: pointer;
-}
-
-.citynight1{
-  position: absolute;
-  background-image: url(${rPath}/imgs/main/citynight2.png);
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: contain;
-  width: 100%;
-  height: 25%;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-}
-
-.citynight2{
-  position: absolute;
-  background-image: url(${rPath}/imgs/main/citynight1.png);
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: contain;
-  width: 100%;
-  height: 20%;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-}
-
-.cityday1{
-  position: absolute;
-  background-image: url(${rPath}/imgs/main/cityday1.png);
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: contain;
-  width: 100%;
-  height: 25%;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-}
-
-.cityday2{
-  position: absolute;
-  background-image: url(${rPath}/imgs/main/cityday2.png);
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: contain;
-  width: 100%;
-  height: 20%;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-}
-
-.clouds{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-
-#Clouds {
-  position: absolute;
-  top: 3%;
-  right: 0;
-  bottom: 67%;
-  left: 0;
-  margin: auto;
-  height: 25%;
-  overflow: hidden;
-  -webkit-animation: 5s ease-out;
-          animation: 5s ease-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-@-webkit-keyframes FadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes FadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.Cloud {
-  position: absolute;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  height: 70px;
-  -webkit-animation-duration: 120s;
-          animation-duration: 120s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-name: Float, FadeFloat;
-          animation-name: Float, FadeFloat;
-  z-index: 1;
-}
-.Cloud.Background1 {
-  height: 10%;
-  min-height: 20px;
-  z-index: 3;
-}
-.Cloud.Background2 {
-  height: 9.09090909%;
-  min-height: 8px;
-  -webkit-animation-duration: 210s;
-          animation-duration: 210s;
-}
-@-webkit-keyframes Float {
-  from {
-    -webkit-transform: translateX(100%) translateZ(0);
-            transform: translateX(100%) translateZ(0);
-  }
-  to {
-    -webkit-transform: translateX(-15%) translateZ(0);
-            transform: translateX(-15%) translateZ(0);
-  }
-}
-@keyframes Float {
-  from {
-    -webkit-transform: translateX(100%) translateZ(0);
-            transform: translateX(100%) translateZ(0);
-  }
-  to {
-    -webkit-transform: translateX(-15%) translateZ(0);
-            transform: translateX(-15%) translateZ(0);
-  }
-}
-
-@-webkit-keyframes FadeFloat {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  5%,
-  90% {
-    opacity: 1;
-  }
-}
-@keyframes FadeFloat {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  5%,
-  90% {
-    opacity: 1;
-  }
-}
-.Cloud:nth-child(10) {
-  -webkit-animation-delay: -184.61538462s;
-          animation-delay: -184.61538462s;
-  top: 60%;
-}
-.Cloud.Background1:nth-child(10) {
-  -webkit-animation-duration: 80s;
-          animation-duration: 80s;
-  height: 35%;
-}
-.Cloud.Background2:nth-child(10) {
-  -webkit-animation-duration: 110s;
-          animation-duration: 110s;
-  height: -3.40909091%;
-}
-.Cloud:nth-child(9) {
-  -webkit-animation-delay: -166.15384615s;
-          animation-delay: -166.15384615s;
-  top: 54%;
-}
-.Cloud.Background1:nth-child(9) {
-  -webkit-animation-duration: 84s;
-          animation-duration: 84s;
-  height: 32.5%;
-}
-.Cloud.Background2:nth-child(9) {
-  -webkit-animation-duration: 114s;
-          animation-duration: 114s;
-  height: -2.15909091%;
-}
-.Cloud:nth-child(8) {
-  -webkit-animation-delay: -147.69230769s;
-          animation-delay: -147.69230769s;
-  top: 48%;
-}
-.Cloud.Background1:nth-child(8) {
-  -webkit-animation-duration: 88s;
-          animation-duration: 88s;
-  height: 30%;
-}
-.Cloud.Background2:nth-child(8) {
-  -webkit-animation-duration: 118s;
-          animation-duration: 118s;
-  height: -0.90909091%;
-}
-.Cloud:nth-child(7) {
-  -webkit-animation-delay: -129.23076923s;
-          animation-delay: -129.23076923s;
-  top: 42%;
-}
-.Cloud.Background1:nth-child(7) {
-  -webkit-animation-duration: 92s;
-          animation-duration: 92s;
-  height: 27.5%;
-}
-.Cloud.Background2:nth-child(7) {
-  -webkit-animation-duration: 122s;
-          animation-duration: 122s;
-  height: 0.34090909%;
-}
-.Cloud:nth-child(6) {
-  -webkit-animation-delay: -110.76923077s;
-          animation-delay: -110.76923077s;
-  top: 36%;
-}
-.Cloud.Background1:nth-child(6) {
-  -webkit-animation-duration: 96s;
-          animation-duration: 96s;
-  height: 25%;
-}
-.Cloud.Background2:nth-child(6) {
-  -webkit-animation-duration: 126s;
-          animation-duration: 126s;
-  height: 1.59090909%;
-}
-.Cloud:nth-child(5) {
-  -webkit-animation-delay: -92.30769231s;
-          animation-delay: -92.30769231s;
-  top: 30%;
-}
-.Cloud.Background1:nth-child(5) {
-  -webkit-animation-duration: 100s;
-          animation-duration: 100s;
-  height: 22.5%;
-}
-.Cloud.Background2:nth-child(5) {
-  -webkit-animation-duration: 130s;
-          animation-duration: 130s;
-  height: 2.84090909%;
-}
-.Cloud:nth-child(4) {
-  -webkit-animation-delay: -73.84615385s;
-          animation-delay: -73.84615385s;
-  top: 24%;
-}
-.Cloud.Background1:nth-child(4) {
-  -webkit-animation-duration: 104s;
-          animation-duration: 104s;
-  height: 20%;
-}
-.Cloud.Background2:nth-child(4) {
-  -webkit-animation-duration: 134s;
-          animation-duration: 134s;
-  height: 4.09090909%;
-}
-.Cloud:nth-child(3) {
-  -webkit-animation-delay: -55.38461538s;
-          animation-delay: -55.38461538s;
-  top: 18%;
-}
-.Cloud.Background1:nth-child(3) {
-  -webkit-animation-duration: 108s;
-          animation-duration: 108s;
-  height: 17.5%;
-}
-.Cloud.Background2:nth-child(3) {
-  -webkit-animation-duration: 138s;
-          animation-duration: 138s;
-  height: 5.34090909%;
-}
-.Cloud:nth-child(2) {
-  -webkit-animation-delay: -36.92307692s;
-          animation-delay: -36.92307692s;
-  top: 12%;
-}
-.Cloud.Background1:nth-child(2) {
-  -webkit-animation-duration: 112s;
-          animation-duration: 112s;
-  height: 15%;
-}
-.Cloud.Background2:nth-child(2) {
-  -webkit-animation-duration: 142s;
-          animation-duration: 142s;
-  height: 6.59090909%;
-}
-.Cloud:nth-child(1) {
-  -webkit-animation-delay: -18.46153846s;
-          animation-delay: -18.46153846s;
-  top: 6%;
-}
-.Cloud.Background1:nth-child(1) {
-  -webkit-animation-duration: 116s;
-          animation-duration: 116s;
-  height: 12.5%;
-}
-.Cloud.Background2:nth-child(1) {
-  -webkit-animation-duration: 146s;
-          animation-duration: 146s;
-  height: 7.84090909%;
-}
-.Cloud {
-  background-image: url(${rPath}/imgs/main/cloud1.png);
-}
-.Cloud.Background2 {
-  background-image: url(${rPath}/imgs/main/cloud2.png);
-}
-
 
 #star1 {
   width: 1px;
@@ -439,6 +70,67 @@ a:hover{
   box-shadow: 624px 1541px #FFF , 1349px 1823px #FFF , 1343px 1866px #FFF , 132px 1873px #FFF , 1753px 1387px #FFF , 46px 1632px #FFF , 761px 1528px #FFF , 1851px 171px #FFF , 1434px 1889px #FFF , 1799px 1408px #FFF , 435px 1899px #FFF , 920px 1157px #FFF , 679px 906px #FFF , 675px 391px #FFF , 884px 1185px #FFF , 1013px 210px #FFF , 434px 1651px #FFF , 643px 872px #FFF , 1862px 764px #FFF , 463px 369px #FFF , 396px 1004px #FFF , 481px 434px #FFF , 226px 1310px #FFF , 653px 1870px #FFF , 547px 190px #FFF , 96px 846px #FFF , 690px 1230px #FFF , 1258px 1399px #FFF , 182px 116px #FFF , 1744px 1345px #FFF , 1298px 74px #FFF , 540px 16px #FFF , 1716px 1895px #FFF , 1324px 1184px #FFF , 1332px 405px #FFF , 1673px 1651px #FFF , 1516px 1826px #FFF , 1863px 1197px #FFF , 1468px 1881px #FFF , 1653px 1044px #FFF , 457px 596px #FFF , 454px 458px #FFF , 1868px 1338px #FFF , 1928px 11px #FFF , 450px 1131px #FFF , 1582px 281px #FFF , 1405px 1437px #FFF , 1803px 1003px #FFF , 181px 258px #FFF , 4px 1561px #FFF , 1266px 1771px #FFF , 1487px 1958px #FFF , 267px 1709px #FFF , 805px 1699px #FFF , 1736px 1868px #FFF , 1154px 892px #FFF , 1893px 1824px #FFF , 1364px 88px #FFF , 111px 1917px #FFF , 683px 792px #FFF , 1648px 1229px #FFF , 372px 63px #FFF , 128px 1435px #FFF , 1576px 1540px #FFF , 1100px 1096px #FFF , 1922px 1211px #FFF , 1993px 280px #FFF , 1567px 1350px #FFF , 213px 309px #FFF , 1427px 208px #FFF , 984px 1283px #FFF , 891px 1241px #FFF , 868px 787px #FFF , 1475px 324px #FFF , 1622px 195px #FFF , 1821px 1006px #FFF , 1109px 1378px #FFF , 1403px 1535px #FFF , 1071px 686px #FFF , 1660px 678px #FFF , 715px 1668px #FFF , 1286px 1697px #FFF , 703px 809px #FFF , 1806px 1616px #FFF , 231px 36px #FFF , 1015px 1761px #FFF , 1102px 1325px #FFF , 326px 1204px #FFF , 470px 1747px #FFF , 794px 497px #FFF , 1666px 362px #FFF , 379px 530px #FFF , 1683px 1397px #FFF , 100px 1468px #FFF , 551px 1488px #FFF , 587px 1121px #FFF , 937px 1892px #FFF , 1538px 1839px #FFF , 183px 360px #FFF , 234px 537px #FFF;
 }
 
+/* 아이콘 부분 */
+#container #dock {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#container {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	right: 20%;
+	left: 10%;
+	width: 79%;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 10px 10px 0 0;
+}
+
+#container li {
+	list-style-type: none;
+	display: inline-block;
+	position: relative;
+}
+
+#container li img {
+	width: 50px;
+	height: 50px;
+	-webkit-box-reflect: below 2px
+		-webkit-gradient(linear, left top, left bottom, from(transparent),
+		color-stop(0.7, transparent), to(rgba(255, 255, 255, .5)));
+	-webkit-transition: all 0.3s;
+	-webkit-transform-origin: 40% 70%;
+}
+
+#container li:hover img {
+	-webkit-transform: scale(2);
+	margin: 0 2em;
+}
+
+#container li:hover+li img, #container li.prev img {
+	-webkit-transform: scale(1.5);
+	margin: 0 1.5em;
+}
+
+#container li span {
+	display: none;
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	width: 100%;
+	background-color: #222;
+	padding: 4px 0;
+	border-radius: 7px;
+}
+
+#container li:hover span {
+	display: block;
+	color: #fff;
+}
+
+
 @keyframes animStar {
   from {
     transform: translateY(0px);
@@ -447,61 +139,3 @@ a:hover{
     transform: translateY(-2000px);
   }
 }
-</style>
-</head>
-<body>
-<div id="Clouds">
-  <div class="Cloud Background1"></div>
-  <div class="Cloud Background2"></div>
-  <div class="Cloud Background1"></div>
-  <div class="Cloud Background2"></div>
-  <div class="Cloud Background1"></div>
-  <div class="Cloud Background2"></div>
-  <div class="Cloud Background2"></div>
-  <div class="Cloud Background1"></div>
-  <div class="Cloud Background2"></div>
-  <div class="Cloud Background2"></div>
-</div>
-
-<div class="night">
-  <div class="stars">
-    <div id='star1'></div>
-    <div id='star2'></div>
-    <div id='star3'></div>
-  </div>
-  <div class="citynight1"></div>
-  <div class="citynight2"></div>
-  <div class="content">
-    <a class="dayopen" href="" data-target="day">
-      <i class="fa fa-moon-o"></i>
-    </a>
-  </div>
-</div>
-
-<div id="day" class="day" style="display: none;">
-  <div class="cityday1"></div>
-  <div class="cityday2"></div>
-  <div class="content">
-    <a class="dayclose">
-      <i class="fa fa-sun-o"></i>
-    </a>
-  </div>
-</div>
-
-<script >jQuery(document).ready(function(){
-	$('.dayopen').on('click', function(e) {
-		var href, target;
-		e.preventDefault();
-		target = $(this).data('target');
-		href = "#" + target;
-		$("#" + target).fadeIn().addClass('activeday');
-		return $(document).scrollTop(0);
-	});
-	return $('.dayclose').on('click', function(e) {e.preventDefault();
-		return $('.activeday').fadeOut().removeClass('activeday');
-	});
-});
-
-</script>
-</body>
-</html>

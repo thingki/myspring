@@ -7,13 +7,6 @@ public class UserInfo {
 	private String uPwd;
 	private String uEmail;
 	private String uAdmin;
-	
-	public String getAdmin() {
-		return uAdmin;
-	}
-	public void setAdmin(String uAdmin) {
-		this.uAdmin = uAdmin;
-	}
 	public int getuNo() {
 		return uNo;
 	}
@@ -44,12 +37,16 @@ public class UserInfo {
 	public void setuEmail(String uEmail) {
 		this.uEmail = uEmail;
 	}
-	
+	public String getuAdmin() {
+		return uAdmin;
+	}
+	public void setuAdmin(String uAdmin) {
+		this.uAdmin = uAdmin;
+	}
 	@Override
 	public String toString() {
 		return "UserInfo [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uEmail=" + uEmail
 				+ ", uAdmin=" + uAdmin + "]";
 	}
-
 	
 }

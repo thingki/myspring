@@ -5,7 +5,12 @@ public class MenuInfo {
 	private String mName;
 	private String mUrl;
 	private String mDesc;
-	
+	private int mOrder;
+	@Override
+	public String toString() {
+		return "MenuInfo [mNum=" + mNum + ", mName=" + mName + ", mUrl=" + mUrl + ", mDesc=" + mDesc + ", mOrder="
+				+ mOrder + "]";
+	}
 	public int getmNum() {
 		return mNum;
 	}
@@ -30,8 +35,12 @@ public class MenuInfo {
 	public void setmDesc(String mDesc) {
 		this.mDesc = mDesc;
 	}
-	@Override
-	public String toString() {
-		return "MenuInfo [mNum=" + mNum + ", mName=" + mName + ", mUrl=" + mUrl + ", mDesc=" + mDesc + "]";
+	public int getmOrder() {
+		return mOrder;
 	}
+	public void setmOrder(int mOrder) {
+		this.mOrder = mOrder;
+	}
+	
+	
 }

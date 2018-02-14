@@ -39,5 +39,7 @@ public class DbServiceImpl implements DbService {
 	public List<ColumnVO> getColumnList(String tableName) {
 		return dbdao.selectColumnList(tableName);
 	}
+	
+
 
 }
