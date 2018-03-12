@@ -39,7 +39,6 @@ public class UrlController {
 		url=getUrl(url, rootPath);
 		List<MenuInfo> menuList = ms.getMenuList();
 		session.setAttribute("menuList", menuList);
-		logger.info("menu=>{}", menuList);
 		return url;
 	}
 

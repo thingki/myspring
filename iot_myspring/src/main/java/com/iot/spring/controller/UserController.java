@@ -30,7 +30,7 @@ public class UserController {
 	private UserService us;
 	@Autowired
 	private ObjectMapper om;
-	
+
 	@RequestMapping(value="/user_list", method=RequestMethod.GET)
 	public @ResponseBody List<UserInfo> getUserListAjax(){
 		List<UserInfo> userList = us.getUserList();
